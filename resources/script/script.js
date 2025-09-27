@@ -3,10 +3,15 @@ const { useRef, useEffect, useState } = React;
 function FactBar() {
   const [currentFactIndex, setCurrentFactIndex] = React.useState(0);
   const facts = [
-    "Recycling one aluminum can saves enough energy to run a TV for 3 hours.",
-    "Plastic takes over 400 years to degrade in landfills.",
-    "Glass is 100% recyclable and can be reused endlessly.",
-    "Composting reduces methane emissions from landfills.",
+    "Recycling a single aluminum can saves enough energy to power a TV for three hours.",
+    "Gaia (Mother Earth) is the oldest Greek deity—reminding us that the planet is the original resource.",
+    "Making new paper from recycled pulp uses about 60% less energy than making it from trees.",
+    "Demeter's cycles of season show us that materials must be continually renewed, not wasted.",
+    "Nearly 75% of all waste is recyclable, yet less than 35% is currently recycled in the U.S.",
+    "Artemis protects the wild: Recycling just one ton of plastic saves over 7,000 kWh of energy.",
+    "Glass is 100% recyclable and can be reused endlessly without any loss in quality. ♻️",
+    "Recycling paper saves trees, but it also reduces air pollution by 73% compared to making new paper.",
+    "It takes a plastic bottle approximately 450 years to decompose in a landfill. ⏳",
   ];
 
   React.useEffect(() => {
@@ -68,9 +73,7 @@ function CameraPreview() {
       canvas.height = video.videoHeight;
       
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      
-      const imageDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-      setCapturedImage(imageDataUrl);
+    
     }
   };
 
@@ -78,7 +81,7 @@ function CameraPreview() {
     if (capturedImage) {
       const link = document.createElement('a');
       link.download = `snapshot_${new Date().getTime()}.jpg`;
-      link.href = capturedImage;
+      
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -92,8 +95,11 @@ function CameraPreview() {
   return (
     <div className="app">
       <div className="main-container">
+        
         <h1 className="app-title">Gaia's Guardians</h1>
         <p className="app-subtitle">Be a Guardian inspired by Gaia, one recycled item at a time.</p>
+
+
         <div className="preview-section">
           {!capturedImage ? (
             <div className="camera-preview-container">
@@ -114,13 +120,15 @@ function CameraPreview() {
             </div>
           )}
         </div>
-
+        <div className="image-right-wrapper">
+          <img src="Images/GreekGoddess.png" className="slideUp" alt="Greek Goddess" />
+        </div>
         <div className="controls-section">
           {!capturedImage ? (
             <button 
               onClick={takeSnapshot} 
               className="btn btn-capture"
-            >
+              >
               Take Snapshot
             </button>
           ) : (
@@ -141,13 +149,15 @@ function CameraPreview() {
           )}
         </div>
 
-        {/* Hidden canvas for image capture */}
-        <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+        
+        
       </div>
     </div>
   );
 }
 
+
 // Actually render CameraPreview on page
 ReactDOM.render(<CameraPreview />,  document.getElementById("root"));
 ReactDOM.render(<FactBar />, document.getElementById("fact-bar"));
+

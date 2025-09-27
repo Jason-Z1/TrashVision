@@ -14,13 +14,26 @@
 <body>
    <div id="root"></div>
    <div id="fact-bar"></div>
+   
    <script type="text/babel" src="./resources/script/script.js"></script>
    <div class="image-right-wrapper">
-      <img src="Images/GreekGoddess.png" class="slideUp" />
+      <img src="resources/Images/GreekGoddess.png" class="slideUp" />
+   </div>
+   <div class="typewriter-section">
+
+      <div class="camera-section" id="cameraSection" aria-hidden="true">
+         <video id="webcam" autoplay playsinline class="webcam-video"></video>
+         <div class="controls">
+            <button id="snapshotBtn" class="btn btn-primary">Take Snapshot</button>
+         </div>
+         <canvas id="snapshotCanvas" class="snapshot-canvas" style="display:none;"></canvas>
+         <img id="snapshotImage" class="snapshot-image" alt="Snapshot result" />
+      </div>
    </div>
 
-   
-
+   <div class="side-image right" aria-hidden="true">
+      <img src="./Images/GreekGoddessClean.png" alt="Greek goddess">
+   </div>
 
 </body>
 
