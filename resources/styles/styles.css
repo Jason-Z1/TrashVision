@@ -13,7 +13,7 @@ body, .app-title, .app-subtitle, .gaia-info, .fun-facts, .footer, .main-containe
 }
 .vines-bottom {
     position: absolute;
-    bottom: -110px;
+    bottom: -90px;
     left: 0;
     width: 100%;
     pointer-events: none;
@@ -21,7 +21,7 @@ body, .app-title, .app-subtitle, .gaia-info, .fun-facts, .footer, .main-containe
 }
 .vines-top {
     position: absolute;
-    top: 20px;
+    top: -30px;
     left: 0;
     width: 100%;
     pointer-events: none;
