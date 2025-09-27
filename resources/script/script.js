@@ -62,20 +62,76 @@ function CameraPreview() {
       }
     };
   }, []);
+  
+  const sendCapturedImage = async (imageDataUrl) => {
+    try {
+      // Convert base64 to binary Blob
+      const byteString = atob(imageDataUrl.split(',')[1]);
+      const mimeString = imageDataUrl.split(',')[0].split(':')[1].split(';')[0];
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: mimeString });
+      const formData = new FormData();
+      formData.append('image', blob, 'snapshot.jpg');
+      
+      console.log('Sending image to prediction API...');
+      
+      const response = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Prediction results:', data);
+      
+      // Log detected items in detail
+      if (data.detected_items && data.detected_items.length > 0) {
+        console.log('\n=== DETECTED ITEMS (Frontend) ===');
+        data.detected_items.forEach((item, index) => {
+          console.log(`${index + 1}. Type: ${item.type}`);
+          console.log(`   Confidence: ${(item.confidence * 100).toFixed(1)}%`);
+          console.log(`   Recyclable: ${item.recyclable ? '♻️ Yes' : '🗑️ No'}`);
+        });
+      }
+      
+      if (data.recommendations && data.recommendations.length > 0) {
+        console.log('\n=== RECOMMENDATIONS (Frontend) ===');
+        data.recommendations.forEach((rec, index) => {
+          console.log(`${index + 1}. ${rec}`);
+        });
+      }
+      
+      // Display results to user
+      displayPredictionResults(data);
+      
+    } catch (error) {
+      console.error('Prediction error:', error);
+      alert(`Prediction failed: ${error.message}. Make sure the Flask server is running on port 5000.`);
+    }
+  };
 
   const takeSnapshot = () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
-      
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
-      
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
+      const imageDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+      setCapturedImage(imageDataUrl);
+      //Captures then sends image
+      sendCapturedImage(imageDataUrl);
     }
   };
+
 
   const downloadImage = () => {
     if (capturedImage) {
@@ -92,6 +148,39 @@ function CameraPreview() {
     setCapturedImage(null);
   };
 
+  const displayPredictionResults = (data) => {
+    if (data.error) {
+      alert(`Error: ${data.error}`);
+      return;
+    }
+    
+    const items = data.detected_items || [];
+    const recommendations = data.recommendations || [];
+    
+    // Log detected items when displaying results
+    console.log('Displaying results for detected items:', items);
+    console.log('Displaying recommendations:', recommendations);
+    
+    let message = 'Prediction Results:\n\n';
+    
+    if (items.length > 0) {
+      items.forEach(item => {
+        const confidence = Math.round(item.confidence * 100);
+        const recycleIcon = item.recyclable ? '♻️' : '🗑️';
+        message += `${recycleIcon} ${item.type} (${confidence}% confidence)\n`;
+      });
+      
+      message += '\nRecommendations:\n';
+      recommendations.forEach(rec => {
+        message += `• ${rec}\n`;
+      });
+    } else {
+      message += 'No items detected with high confidence.';
+    }
+    
+    alert(message);
+  };
+
   return (
     <div className="app">
       <div className="main-container">
@@ -101,7 +190,7 @@ function CameraPreview() {
 
 
         <div className="preview-section">
-          {!capturedImage ? (
+          {!capturedImage ? ( 
             <div className="camera-preview-container">
               <video 
                 ref={videoRef} 
@@ -158,6 +247,8 @@ function CameraPreview() {
 
 
 // Actually render CameraPreview on page
-ReactDOM.render(<CameraPreview />,  document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<CameraPreview />);
+
 ReactDOM.render(<FactBar />, document.getElementById("fact-bar"));
 
