@@ -50,7 +50,6 @@ print("TRAINING_KEY from env:", os.getenv("TRAINING_KEY"))
 print("PREDICTION_RESOURCE_ID from env:", os.getenv("PREDICTION_RESOURCE_ID"))
 
 
-
 def main():
     endpoint = os.getenv('ENDPOINT')
     key = os.getenv('TRAINING_KEY')
