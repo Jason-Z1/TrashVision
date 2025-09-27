@@ -66,27 +66,31 @@ function CameraPreview() {
   return (
     <div className="app">
       <div className="main-container">
-        <h1 className="app-title">Gaia's Guardians</h1>
-        <p className="app-subtitle">Be a Guardian inspired by Gaia, one recycled item at a time.</p>
+  <h1 className="app-title" style={{marginTop: '-2.2rem'}}>Gaia's Guardians</h1>
+  <p className="app-subtitle" style={{color: '#2E4D3A', marginTop: '-1.9rem'}}>Be a Guardian inspired by Gaia, one recycled item at a time.</p>
         <div className="preview-section">
-          {!capturedImage ? (
-            <div className="camera-preview-container">
-              <video 
-                ref={videoRef} 
-                autoPlay 
-                playsInline 
-                className="video-stream"
-              />
-            </div>
-          ) : (
-            <div className="captured-image-container">
-              <img 
-                src={capturedImage} 
-                alt="Captured snapshot" 
-                className="captured-image"
-              />
-            </div>
-          )}
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative'}}>
+            {!capturedImage ? (
+              <div className="camera-preview-container" style={{position: 'relative'}}>
+                <video 
+                  ref={videoRef} 
+                  autoPlay 
+                  playsInline 
+                  className="video-stream"
+                />
+                <img src="Images/vines_top.png" className="vines-top" alt="Vines Top" style={{position: 'absolute', top: '-10px', left: 0, width: '100%', pointerEvents: 'none', zIndex: 10}} />
+              </div>
+            ) : (
+              <div className="captured-image-container">
+                <img 
+                  src={capturedImage} 
+                  alt="Captured snapshot" 
+                  className="captured-image"
+                />
+              </div>
+            )}
+          </div>
+          <img src="Images/vines_bottom.png" className="vines-bottom" alt="Vines Bottom" />
         </div>
 
         <div className="controls-section">

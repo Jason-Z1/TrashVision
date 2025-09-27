@@ -12,12 +12,31 @@
 </head>
 
 <body>
+   <header id="fun-header" style="width:100%;text-align:center;padding:0.3rem 0;font-size:0.8rem;font-family:Papyrus, fantasy;background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.08);">Glass is 100% recyclable and can be reused endlessly without any loss in quality. ♻️</header>
    <div id="root"></div>
-   <script type="text/babel" src="./resources/script/script.js"></script>
-   <img src="Images/GreekGoddess.png" class = "slideUp" />
-   
+    <script type="text/babel" src="./resources/script/script.js"></script>
+    <script>
+          const facts = [
+             "Recycling a single aluminum can saves enough energy to power a TV for three hours.",
+             "Gaia (Mother Earth) is the oldest Greek deity—reminding us that the planet is the original resource.",
+             "Making new paper from recycled pulp uses about 60% less energy than making it from trees.",
+             "Demeter's cycles of season show us that materials must be continually renewed, not wasted.",
+             "Nearly 75% of all waste is recyclable, yet less than 35% is currently recycled in the U.S.",
+             "Artemis protects the wild: Recycling just one ton of plastic saves over 7,000 kWh of energy.",
+             "Glass is 100% recyclable and can be reused endlessly without any loss in quality. ♻️",
+            "Recycling paper saves trees, but it also reduces air pollution by 73% compared to making new paper.",
+            "It takes a plastic bottle approximately 450 years to decompose in a landfill. ⏳"
+          ];
+       let factIndex = 0;
+       setInterval(() => {
+          factIndex = (factIndex + 1) % facts.length;
+          document.getElementById('fun-header').textContent = facts[factIndex];
+       }, 5000);
+    </script>
 
-
+   <img src="Images/GreekGoddess.png" class="slideUp" style="width: 300px; display: block; margin: -60px auto 0 auto;" alt="Greek Goddess" />
+   <footer style="width:100%;text-align:center;padding:0.3rem 0;font-size:1.5rem;font-family:Papyrus, fantasy;color:#fff;background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);box-shadow:0 2px 12px rgba(0,0,0,0.08);">GirlHacks 2025</footer>
+   <img src="Images/wreath.png" style="width: 350px; display: block; margin: 2rem auto 0 auto;" alt="Wreath" />
 </body>
 
 </html>
