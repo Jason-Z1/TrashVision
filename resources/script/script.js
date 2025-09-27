@@ -66,8 +66,8 @@ function CameraPreview() {
   return (
     <div className="app">
       <div className="main-container">
-        <h1 className="app-title">📷 Camera Preview</h1>
-        
+        <h1 className="app-title">Gaia's Guardians</h1>
+        <p className="app-subtitle">Be a Guardian inspired by Gaia, one recycled item at a time.</p>
         <div className="preview-section">
           {!capturedImage ? (
             <div className="camera-preview-container">
