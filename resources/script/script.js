@@ -1,5 +1,31 @@
 const { useRef, useEffect, useState } = React;
 
+function FactBar() {
+  const [currentFactIndex, setCurrentFactIndex] = React.useState(0);
+  const facts = [
+    "Recycling one aluminum can saves enough energy to run a TV for 3 hours.",
+    "Plastic takes over 400 years to degrade in landfills.",
+    "Glass is 100% recyclable and can be reused endlessly.",
+    "Composting reduces methane emissions from landfills.",
+  ];
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFactIndex(prev => (prev + 1) % facts.length);
+    }, 10000); // every 10 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="fact-bar">
+      <p key={currentFactIndex} className="fact-text fade">
+        {facts[currentFactIndex]}
+      </p>
+    </div>
+  );
+}
+
+
 function CameraPreview() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -123,4 +149,5 @@ function CameraPreview() {
 }
 
 // Actually render CameraPreview on page
-ReactDOM.render(<CameraPreview />, document.getElementById("root"));
+ReactDOM.render(<CameraPreview />,  document.getElementById("root"));
+ReactDOM.render(<FactBar />, document.getElementById("fact-bar"));
