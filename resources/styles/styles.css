@@ -133,26 +133,26 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 25px rgba(159, 124, 97, 0.4);
 }
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.9);
-    color: #555;
-    border: 2px solid rgba(102, 126, 234, 0.2);
+    color: #ebc495;
+    border: 2px solid rgba(77, 48, 3, 0.2);
 }
 
 
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 1);
+    background: rgb(156, 115, 68);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-capture {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100);
-    color: rgb(78, 44, 201);
+    background: linear-gradient(135deg, #683d09 0%, #ffa500 100);
+    color: rgb(52, 31, 1);
     padding: 1.25rem 3rem;
     font-size: 1.25rem;
     min-width: 200px;
@@ -218,8 +218,8 @@ body {
     }
 }
 .slideUp {
-  position: absolute;
-  top: 100px;
+  position: relative;
+  top: 50px;
   right: 0;
   width: 500px;
   z-index: 999;
@@ -269,7 +269,33 @@ body {
         padding: 1rem 2rem;
         font-size: 1rem;
     }
+
+    
     
 
+}
+
+.fact-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FFD700;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.fact-text {
+  font-size: 1rem;
+  animation: fadeInOut 10s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
