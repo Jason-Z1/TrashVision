@@ -64,8 +64,9 @@ def main():
 
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--project-name', default='TrashVision')
-    parser.add_argument('--publish-name', default='trashvision-v1')
+    parser.add_argument('--project-name', default='RecycleSmart')
+    parser.add_argument('--publish-name', default='trashvision-version2')
+
     parser.add_argument('--data-dir', default=os.path.join('backend', 'data'))
     args = parser.parse_args()
 
@@ -169,7 +170,7 @@ def main():
     print('Done. Project ID:', project.id)
     print('Use the project ID and publish name in the backend env vars:')
     print('PROJECT_ID=', project.id)
-    print('PUBLISHED_NAME=', publish_name)
+    print('TRAINING_PUBLISHED_NAME=', publish_name)
 
 
 if __name__ == '__main__':
