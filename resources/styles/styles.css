@@ -441,7 +441,7 @@ body {
     box-shadow: 0 8px 40px rgba(0,0,0,0.15);
     color: #113322;
     font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
     z-index: 60;
 }
 .prediction-panel h4 { margin: 0 0 0.3rem 0; font-size: 1.15rem; }
