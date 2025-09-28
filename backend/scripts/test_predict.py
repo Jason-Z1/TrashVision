@@ -50,7 +50,7 @@ def run_prediction(image):
         
         # Basic configuration validation
         if not all([prediction_key, prediction_endpoint, project_id]):
-            print(f"❌ Missing configuration - Endpoint: {bool(prediction_endpoint)}, Project: {bool(project_id)}, Key: {bool(prediction_key)}")
+            print(f"Missing configuration - Endpoint: {bool(prediction_endpoint)}, Project: {bool(project_id)}, Key: {bool(prediction_key)}")
         
         # Validate required environment variables
         if not all([prediction_key, prediction_endpoint, project_id]):
@@ -96,12 +96,12 @@ def run_prediction(image):
                     response = requests.post(prediction_url, headers=headers, data=image_data, timeout=10)
                     
                     if response.status_code == 200:
-                        print(f"✅ Prediction successful with {iteration_name}")
+                        print(f"Prediction successful with {iteration_name}")
                         successful_response = response
                         break
                     # Only log if not the expected first attempt
                     elif response.status_code != 200 and iteration_name == published_name:
-                        print(f"⚠️ Primary iteration failed: {response.status_code}")
+                        print(f"Primary iteration failed: {response.status_code}")
                         continue
                     else:
                         continue
@@ -109,7 +109,7 @@ def run_prediction(image):
                 except Exception as e:
                     # Only log network errors for primary iteration
                     if iteration_name == published_name:
-                        print(f"⚠️ Network error: {e}")
+                        print(f"Network error: {e}")
                     continue
             
             # If we found a working response, break out of key loop too        
@@ -179,68 +179,6 @@ def run_prediction(image):
                 'tried_iterations': iteration_names_to_try,
                 'suggestion': 'Go to Azure Custom Vision portal > Performance tab > check your published iteration name'
             }
-            
-        # Obsolete code below - keeping for reference        
-        if False:  # elif response.status_code == 401:
-            # Try alternative URL format for published models
-            alt_url = f"{prediction_endpoint}/customvision/v3.0/Prediction/{project_id}/classify/iterations/{published_name}/image/noStore"
-            print(f"Debug - Trying alternative URL: {alt_url}")
-            
-            alt_response = requests.post(alt_url, headers=headers, data=image_data)
-            print(f"Debug - Alt response status: {alt_response.status_code}")
-            
-            if alt_response.status_code == 200:
-                # Process successful response with alternative URL
-                prediction_result = alt_response.json()
-                
-                # Process the prediction results (copy of existing logic)
-                detected_items = []
-                recommendations = []
-                
-                if 'predictions' in prediction_result:
-                    predictions = prediction_result['predictions']
-                    predictions.sort(key=lambda x: x['probability'], reverse=True)
-                    
-                    for pred in predictions:
-                        if pred['probability'] > 0.5:
-                            is_recyclable = pred['tagName'].lower() == 'recyclable'
-                            
-                            detected_items.append({
-                                'type': pred['tagName'].lower(),
-                                'confidence': pred['probability'],
-                                'recyclable': is_recyclable
-                            })
-                            
-                            if is_recyclable:
-                                recommendations.append(f"{pred['tagName']} item can be placed in recycling bin")
-                            else:
-                                recommendations.append(f"{pred['tagName']} item should go in general waste")
-                
-                if not detected_items:
-                    detected_items.append({
-                        'type': 'unknown',
-                        'confidence': 0.0,
-                        'recyclable': False
-                    })
-                    recommendations.append('Unable to classify item. Please check local recycling guidelines.')
-                
-                return {
-                    'detected_items': detected_items,
-                    'recommendations': recommendations,
-                    'raw_predictions': prediction_result.get('predictions', [])
-                }
-            else:
-                return {
-                    'error': f'Authentication failed. Check your PREDICTION_KEY and ENDPOINT. Status: {response.status_code}',
-                    'details': response.text,
-                    'url_tried': prediction_url
-                }
-        else:
-            return {
-                'error': f'Prediction API error: {response.status_code} - {response.text}',
-                'url_tried': prediction_url
-            }
-            
     except Exception as e:
         return {
             'error': f'Prediction failed: {str(e)}'
