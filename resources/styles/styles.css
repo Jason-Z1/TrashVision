@@ -83,7 +83,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+  gap: 2rem;
 }
 
 .app-title {
@@ -283,17 +283,17 @@ body {
 }
 
 .fact-bar {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
     left: 0;
     right: 0;
     width: 100vw;
-    background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
-    color: white;
-    text-align: center;
+  background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
+  color: white;
+  text-align: center;
     padding: 10px 0;
-    z-index: 1000;
-    font-family: 'Segoe UI', sans-serif;
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .fact-text {
