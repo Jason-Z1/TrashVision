@@ -109,7 +109,7 @@
 
 /* Greek-inspired font stack; you can add a webfont later (GFS Didot, Cardo, Cormorant) */
 .app-title {
-    font-family: 'Cormorant Garamond', 'GFS Didot', Georgia, 'Times New Roman', serif;
+    font-family: papyrus, fantasy;
     color: white
 }
 
@@ -204,7 +204,7 @@ body {
     text-align: center;
     margin-top: 1.2vh;
     margin-bottom: 0;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.06em;
     background: white;
     background-clip: text;
@@ -439,7 +439,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 90vw;
-           background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
+          
         bottom: 0;
         width: 100%;
     backdrop-filter: blur(10px);
