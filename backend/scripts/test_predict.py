@@ -159,6 +159,9 @@ def run_prediction(image):
                 # Sort by probability (highest first)
                 predictions.sort(key=lambda x: x['probability'], reverse=True)
                 
+                # Only process the highest confidence prediction for recommendations
+                highest_confidence_pred = None
+                
                 for pred in predictions:
                     if pred['probability'] > 0.5:  # Only include predictions with >50% confidence
                         is_recyclable = pred['tagName'].lower() == 'recyclable'
@@ -169,11 +172,14 @@ def run_prediction(image):
                             'recyclable': is_recyclable
                         })
                         
-                        # Generate recommendations based on prediction
-                        if is_recyclable:
-                            recommendations.append(f"{pred['tagName']} item can be placed in recycling bin")
-                        else:
-                            recommendations.append(f"{pred['tagName']} item should go in general waste")
+                        # Only set recommendation for the highest confidence prediction
+                        if highest_confidence_pred is None:
+                            highest_confidence_pred = pred
+                            # Generate recommendation based on highest confidence prediction only
+                            if is_recyclable:
+                                recommendations.append(f"{pred['tagName']} item can be placed in recycling bin")
+                            else:
+                                recommendations.append(f"{pred['tagName']} item should go in general waste")
             
             # If no high-confidence predictions, provide default response
             if not detected_items:
@@ -264,10 +270,10 @@ def test_prediction_endpoint(image_path):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         # Start the Flask web server
-        print("🚀 Starting TrashVision Flask Web Server...")
-        print("📱 Web App will be available at: http://localhost:5000")
-        print("🔍 Prediction API available at: http://localhost:5000/predict")
-        print("🛑 Press Ctrl+C to stop the server")
+        print("Starting TrashVision Flask Web Server...")
+        print("Web App will be available at: http://localhost:5000")
+        print("Prediction API available at: http://localhost:5000/predict")
+        print("Press Ctrl+C to stop the server")
         print("=" * 50)
         
         # Start the server with host='0.0.0.0' for web service compatibility

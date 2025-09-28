@@ -203,6 +203,7 @@ function displayPredictionResults(data) {
         // Show recommendations for the highest confidence item
         if (recommendations.length > 0) {
             message += '\nRecommendations:\n';
+            // NOTE BEFORE DEADLINE, MAKE SURE THE OUTPUT ONLY OUTPUTS ONE RECOMMENDATION
             recommendations.forEach(rec => {
                 message += `• ${rec}\n`;
             });
