@@ -91,7 +91,7 @@ function takeSnapshot() {
         capturedImgElem.src = capturedImageData;
         // Send to prediction API after showing the real image
         sendToPredictionAPI(capturedImageData);
-        console.log('📸 Snapshot taken successfully');
+        console.log('Snapshot taken successfully');
     }, 1000);
 }
 
@@ -120,8 +120,22 @@ async function sendToPredictionAPI(imageDataUrl) {
         const formData = new FormData();
         formData.append('image', blob, 'snapshot.jpg');
         
+        let apiUrl;
+        if (
+            window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1' ||
+            window.location.hostname === '' ||
+            window.location.hostname === '::1'
+        ) {
+        // Local development
+            apiUrl = 'http://localhost:5000/predict';
+        } else {
+        // Production (same domain as frontend)
+            apiUrl = '/predict';
+        }
+
         // Send to Flask API
-        const response = await fetch('/predict', {
+        const response = await fetch(apiUrl, {
             method: 'POST',
             body: formData
         });
