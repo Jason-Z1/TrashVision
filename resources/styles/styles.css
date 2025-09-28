@@ -77,6 +77,27 @@
     color: #49705B;
 }
 
+/* Title row: icons on both sides of the main title */
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.title-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    opacity: 0.95;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+.title-icon.left { transform: translateX(-4px); }
+.title-icon.right { transform: translateX(4px); }
+
+@media (max-width: 480px) {
+    .title-icon { width: 36px; height: 36px; }
+    .app-title { font-size: 1.6rem; }
+}
 .vines-bottom {
     position: absolute;
     top: -25%;
@@ -426,6 +447,13 @@ body {
 .prediction-panel .line { 
     margin: 0.4rem 0; 
     font-size: clamp(0.85rem, 1.9vw, 1.05rem); 
+}
+
+.thank-you {
+    margin-top: 8px;
+    font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+    color: #2a6a3b;
+    opacity: 0.95;
 }
 
 @media (max-width: 480px) {

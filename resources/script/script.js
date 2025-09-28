@@ -238,6 +238,9 @@ function displayPredictionResults(data) {
             html += '<div class="line">No items detected with high confidence.</div>';
         }
 
+        // Friendly thank-you message
+        html += '<div class="thank-you" aria-live="polite">Thank you for caring for planet Earth. Gaia is happy. 🙂</div>';
+
         panel.innerHTML = html;
         panel.style.display = 'block';
         // Also populate the captured view panel (if present)
