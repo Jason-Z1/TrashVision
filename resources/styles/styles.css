@@ -78,11 +78,12 @@ body {
 
 .main-container {
     width: 100%;
+    max-width: 320px;
     max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+  gap: 2rem;
 }
 
 .app-title {
@@ -90,7 +91,7 @@ body {
     font-weight: 900;
     color: rgb(2, 39, 18);
     text-align: right;
-    margin-top: 0;
+    margin-top: 2rem;
     margin-bottom: 0;
     /*text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);*/
 }
@@ -102,7 +103,8 @@ body {
     padding: 2rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
-    max-width: 500px;
+    max-width: 320px;
+    max-width: 220px;
 }
 
 .camera-preview-container {
@@ -283,11 +285,13 @@ body {
 .fact-bar {
   position: fixed;
   top: 0;
-  width: 100%;
+    left: 0;
+    right: 0;
+    width: 100vw;
   background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
   color: white;
   text-align: center;
-  padding: 10px 0;
+    padding: 10px 0;
   z-index: 1000;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -341,7 +345,8 @@ body {
 
 .preview-section {
     flex: 1 1 0;
-    max-width: 900px;
+    max-width: 500px;
+
 }
 
 .preview-side {
