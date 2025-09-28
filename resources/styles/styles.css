@@ -74,7 +74,7 @@
 }
 
 .app-title, .app-subtitle, .main-container, .preview-section, .controls-section, .btn, .btn-secondary {
-    color: #49705B;
+    color: white;
 }
 
 /* Title row: icons on both sides of the main title */
@@ -101,15 +101,16 @@
     align-items: center;
     padding: 0.6rem 1rem;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    margin-bottom: 0.6rem;
+         background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
 }
 
 /* Greek-inspired font stack; you can add a webfont later (GFS Didot, Cardo, Cormorant) */
 .app-title {
     font-family: 'Cormorant Garamond', 'GFS Didot', Georgia, 'Times New Roman', serif;
+    color: white
 }
 
 @media (max-width: 480px) {
@@ -149,7 +150,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Papyrus", cursive;
-    background: linear-gradient(135deg, #539824 0%, #a0c976 25%, #cee2bb 50%, #7cad27 75%, #6ea023 100%);
+    background: linear-gradient(180deg, #76846d 0%, #9fab94 25%, #c0cfb2 50%, #9fab94 75%, #76846d 100%);
     min-height: 100vh;
     color: #49705B;
     width: 100vw;
@@ -197,33 +198,23 @@ body {
 .app-title {
     font-size: clamp(2.4rem, 6.8vw, 4rem);
     font-weight: 900;
-    color: #062b12; /* fallback color */
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+    background-clip: border-box;
     text-align: center;
     margin-top: 1.2vh;
     margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    background: linear-gradient(90deg, #ffffff 0%, #f2fff6 45%, #dfffe8 100%);
+    background: white;
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: white;
     filter: drop-shadow(0 8px 18px rgba(20,60,30,0.12));
     position: relative;
 }
 
-/* subtle glowing outline behind the title */
-.app-title::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 55%;
-    width: 120%;
-    height: 40%;
-    background: radial-gradient(closest-side, rgba(122,208,123,0.18), transparent 60%);
-    z-index: -1;
-    filter: blur(18px);
-}
+
 
 .preview-section {
     position: relative;
@@ -448,7 +439,9 @@ body {
     position: relative;
     width: 100%;
     max-width: 90vw;
-    background: rgba(29, 95, 40, 0.8);
+           background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
+        bottom: 0;
+        width: 100%;
     backdrop-filter: blur(10px);
     border-radius: clamp(10px, 2vw, 15px);
     text-align: center;
@@ -457,13 +450,14 @@ body {
     z-index: 10;
     font-family: 'Segoe UI', sans-serif;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 3.4px solid #B6862C;
 }
 
 .fact-text {
     font-size: clamp(0.8rem, 2vw, 1rem);
-    color: #39ff39;
-    text-shadow: 0 0 10px #39ff39, 0 0 20px #39ff39, 0 0 30px #39ff39;
-    animation: breathingGlow 3s ease-in-out infinite, fadeInOut 10s ease-in-out infinite;
+    color:white;
+        /* text-shadow removed for no glow */
+    animation: fadeInOut 10s ease-in-out infinite;
     font-weight: 600;
     margin: 0;
 }
