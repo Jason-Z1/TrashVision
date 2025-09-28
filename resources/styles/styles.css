@@ -578,3 +578,5 @@ body {
     .prediction-panel { 
         font-size: clamp(0.75rem, 2.2vw, 0.88rem); 
         padding: clamp(0.3rem, 1.5vw, 0.5rem); 
+    }
+}
