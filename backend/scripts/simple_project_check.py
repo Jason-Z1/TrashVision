@@ -1,5 +1,7 @@
 """
 Simple script to check Azure Custom Vision project names and IDs
+
+cd "<filePath>" ; python .\backend\scripts\simple_project_check.py to run properly
 """
 import os
 from dotenv import load_dotenv

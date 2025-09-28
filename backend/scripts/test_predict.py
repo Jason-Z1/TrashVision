@@ -1,7 +1,7 @@
 """
 Flask web server for TrashVision - serves the web app and handles predictions
 Usage:
-python backend/scripts/test_predict.py
+cd "<localPath to clone>" ; python backend/scripts/test_predict.py
 """
 import sys
 import os
