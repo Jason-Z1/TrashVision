@@ -440,9 +440,9 @@ body {
     position: relative;
     width: 100%;
     max-width: 90vw;
-           background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
+           background: transparent;
         bottom: 0;
-        width: 100%;
+        width: 60%;
     backdrop-filter: blur(10px);
     border-radius: clamp(10px, 2vw, 15px);
     text-align: center;
