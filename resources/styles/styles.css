@@ -1,6 +1,8 @@
 /* Left goddess image wrapper */
 .image-left-wrapper {
-    flex: 0 1 300px;
+    flex: 0 1 20vw;
+    min-width: 180px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,33 +10,39 @@
 
 .image-left-wrapper .slideUp {
     width: 100%;
-    max-width: 320px;
+    max-width: 20vw;
+    min-width: 180px;
     height: auto;
     margin-right: 0;
     box-shadow: none;
 }
+
 /* Flex row for camera preview and goddess image */
 .preview-row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 2vw;
-        width: 100%;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+    width: 100vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 0 2vw;
 }
 
 .preview-row .preview-section {
-    flex: 3 1 70vw;
-    min-width: 0;
+    flex: 3 1 50vw;
+    min-width: 300px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .preview-row .image-right-wrapper {
-    flex: 0 1 300px;
+    flex: 0 1 20vw;
+    min-width: 180px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +50,8 @@
 
 .preview-row .slideUp {
     width: 100%;
-    max-width: 320px;
+    max-width: 20vw;
+    min-width: 180px;
     height: auto;
     margin-left: 0;
     box-shadow: none;
@@ -51,14 +60,18 @@
 @media (max-width: 900px) {
     .preview-row {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 3vh;
     }
     .preview-row .image-right-wrapper {
-        margin-top: 0.5rem;
+        margin-top: 1vh;
         margin-left: 0;
     }
+    .image-left-wrapper .slideUp,
+    .preview-row .slideUp {
+        max-width: 25vw;
+        min-width: 120px;
+    }
 }
-
 
 .app-title, .app-subtitle, .main-container, .preview-section, .controls-section, .btn, .btn-secondary {
     color: #49705B;
@@ -86,23 +99,28 @@
     .app-title { font-size: 1.6rem; }
 }
 .vines-bottom {
-  position: absolute;
-  bottom: -60px; /* Adjust this to overlap the white border just right */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; /* Or 35% if you want it narrower */
-  pointer-events: none;
-  z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 20%;
+    pointer-events: none;
+    z-index: 3;
+    object-fit: cover;
 }
 
 .vines-top {
-  position: absolute;
-  bottom: 150px; /* Adjust this to overlap the white border just right */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; /* Or 35% if you want it narrower */
-  pointer-events: none;
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 20%;
+    pointer-events: none;
+    z-index: 3;
+    object-fit: cover;
+    transform: scaleY(-1);
 }
 
 * {
@@ -116,46 +134,49 @@ body {
     background: linear-gradient(135deg, #e2ebe3 0%, #e2ebe3 100%);
     min-height: 100vh;
     color: #49705B;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 .app-subtitle {
-  font-family:Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
-  font-size: 1.2rem;
-  color: #49705B;
-  margin-top: 1px;
-  text-align: center;
-  animation: fadeIn 1s ease-out forwards;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #49705B;
+    margin-top: 0.2vh;
+    text-align: center;
+    animation: fadeIn 1s ease-out forwards;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .app {
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 5% 2rem 5%;
+    padding: 2vh 2vw;
     animation: fadeIn 1s ease-out forwards;
 }
 
 .main-container {
-        width: 100%;
-        max-width: 800px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+    width: 100%;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
 }
 
 .app-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 900;
     color: rgb(2, 39, 18);
     text-align: right;
-    margin-top: 2rem;
+    margin-top: 2vh;
     margin-bottom: 0;
 }
 
@@ -163,11 +184,12 @@ body {
     position: relative;
     width: 100%;
     background-color: white;
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: clamp(15px, 2vw, 20px);
+    padding: clamp(0.8rem, 2vw, 1rem);
+    box-shadow: 0 1vh 4vh rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
-    max-width: 90vw;
+    max-width: 50vw;
+    min-width: 300px;
 }
 
 .camera-preview-container {
@@ -177,18 +199,19 @@ body {
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 15px;
+    border-radius: clamp(12px, 1.5vw, 15px);
     overflow: hidden;
     aspect-ratio: 16/9;
-    max-width: 90vw;
-    max-height: 80vh;
+    max-width: 100%;
+    max-height: 50vh;
 }
 
 .video-stream {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: clamp(12px, 1.5vw, 15px);
+    z-index: 1;
 }
 
 .captured-image-container {
@@ -198,17 +221,17 @@ body {
     justify-content: right;
     align-items: right;
     background: #000;
-    border-radius: 15px;
+    border-radius: clamp(12px, 1.5vw, 15px);
     overflow: hidden;
     aspect-ratio: 16/9;
-    max-height: 500px;
+    max-height: 40vh;
 }
 
 .captured-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: clamp(12px, 1.5vw, 15px);
 }
 
 .controls-section {
@@ -217,13 +240,14 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-top: 1vh;
 }
 
 .btn {
-    padding: 0.75rem 2rem;
+    padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(1.5rem, 3vw, 2rem);
     border: none;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -243,7 +267,7 @@ body {
 .btn-secondary:hover {
     background: rgb(156, 115, 68);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5vh 1.5vh rgba(0, 0, 0, 0.1);
 }
 
 .btn-capture {
@@ -251,14 +275,14 @@ body {
     background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
     color: #fff !important;
     border: none;
-    padding: 1.25rem 3rem;
-    font-size: 1.25rem;
-    min-width: 200px;
+    padding: clamp(1rem, 2.5vw, 1.25rem) clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    min-width: clamp(150px, 25vw, 200px);
 }
 
 .btn-capture:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 1vh 2.5vh rgba(255, 107, 107, 0.4);
 }
 
 .action-buttons {
@@ -268,22 +292,19 @@ body {
     justify-content: center;
 }
 
-
 @media (max-width: 768px) {
     .app {
-        padding: 1rem 5% 1rem 5%;
+        padding: 1vh 2vw;
     }
     
     .main-container {
-        gap: 1.5rem;
-    }
-    
-    .app-title {
-        font-size: 2rem;
+        gap: 1.5vh;
+        max-width: 95vw;
     }
     
     .preview-section {
-        padding: 1.5rem;
+        padding: 1.5vh 2vw;
+        max-width: 80vw;
     }
 
     .action-buttons {
@@ -292,119 +313,125 @@ body {
         width: 100%;
     }
     
-
     .btn-capture {
         width: 100%;
-        max-width: 300px;
+        max-width: clamp(250px, 60vw, 300px);
         min-width: unset;
     }
 }
 
 @media (max-width: 480px) {
     .app {
-        padding: 0.5rem 5% 0.5rem 5%;
+        padding: 0.5vh 1vw;
     }
     
     .main-container {
-        gap: 1rem;
-    }
-    
-    .app-title {
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
+        gap: 1vh;
+        max-width: 98vw;
     }
     
     .preview-section {
-        padding: 1rem;
+        padding: 1vh 2vw;
+        max-width: 95vw;
+        min-width: 280px;
     }
     
     .camera-preview-container,
     .captured-image-container {
         aspect-ratio: 1/1;
+        max-height: 60vh;
     }
     
     .btn {
-        padding: 0.9rem 1.5rem;
-        font-size: 0.95rem;
-  }
+        padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.2rem, 4vw, 1.5rem);
+        font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+    }
     
     .btn-capture {
-        padding: 1rem 2rem;
-        font-size: 1rem;
-  
+        padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2rem);
+        font-size: clamp(0.9rem, 2.4vw, 1rem);
     }
 }
 
 .fact-bar {
-  position: fixed;
-  top: 0;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     width: 100vw;
-  background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
-  color: white;
-  text-align: center;
-    padding: 10px 0;
-  z-index: 1000;
-  font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
+    color: white;
+    text-align: center;
+    padding: 1vh 2vw;
+    z-index: 1000;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .fact-text {
-  font-size: 1rem;
-  animation: fadeInOut 10s ease-in-out infinite;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    animation: fadeInOut 10s ease-in-out infinite;
 }
-
 
 .slideUp {
     animation: slideUp 1s ease-out forwards;
-    width: 220px;
-    max-width: 30vw;
+    width: clamp(180px, 15vw, 220px);
+    max-width: 20vw;
     height: auto;
     display: block;
     position: static;
-    margin-left: 2rem;
+    margin-left: 2vw;
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInOut {
-  0%   { opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; }
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { opacity: 0; }
 }
 
-/* Prediction panel that appears inside the camera preview area */
 .prediction-panel {
     position: absolute;
-    inset: 0; /* fill the entire camera container */
+    inset: 0;
     margin: 0; 
     background: rgba(255,255,255,0.96);
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: clamp(10px, 1.2vw, 12px);
+    padding: clamp(0.5rem, 2vw, 1rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 0.8vh 4vh rgba(0,0,0,0.15);
     color: #113322;
-    font-size: 1rem;
-    font-family:Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
     z-index: 60;
 }
-.prediction-panel h4 { margin: 0 0 0.3rem 0; font-size: 1.15rem; }
-.prediction-panel .line { margin: 0.4rem 0; font-size: 1.05rem; }
+
+.prediction-panel h4 { 
+    margin: 0 0 0.3rem 0; 
+    font-size: clamp(0.9rem, 2vw, 1.15rem); 
+}
+
+.prediction-panel .line { 
+    margin: 0.4rem 0; 
+    font-size: clamp(0.85rem, 1.9vw, 1.05rem); 
+}
 
 @media (max-width: 480px) {
-    .prediction-panel { font-size: 0.88rem; padding: 0.5rem; }
+    .prediction-panel { 
+        font-size: clamp(0.75rem, 2.2vw, 0.88rem); 
+        padding: clamp(0.3rem, 1.5vw, 0.5rem); 
+    }
 }

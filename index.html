@@ -34,14 +34,11 @@
            </div>
            <div class="preview-section">
            <div id="cameraContainer" class="camera-preview-container" style="position:relative;">
-                 
+              <video id="videoStream" autoplay playsinline class="video-stream"></video>
               <img src="Images/vines_bottom.png" class="vines-bottom" alt="Vines Bottom">
               <img src="Images/vines_bottom.png" class="vines-top" alt="Vines Top">
-              <video id="videoStream" autoplay playsinline class="video-stream"></video>
-                 
               <!-- Prediction panel moved inside camera container so it can fill the entire camera box -->
               <div id="predictionPanel" class="prediction-panel" style="display: none;" aria-live="polite"></div>
-
            </div>
               <div id="capturedContainer" class="captured-image-container" style="display: none;">
                  <img id="capturedImage" class="captured-image" alt="Captured snapshot" />
