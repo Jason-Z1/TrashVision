@@ -41,11 +41,7 @@ def run_prediction(image):
         iteration_names_to_try = [
             published_name,
             'RecycleSmart-Prediction',
-            'RecycleSmart', 
-            'Iteration3',
-            'Iteration4',
-            'Iteration5',
-            'latest'
+            'RecycleSmart'
         ]
         
         # Basic configuration validation

@@ -106,20 +106,6 @@ function retakePhoto() {
     console.log('Retaking photo');
 }
 
-// Download image function
-function downloadImage() {
-    if (capturedImageData) {
-        const link = document.createElement('a');
-        link.download = `gaia-guardians-snapshot-${new Date().getTime()}.jpg`;
-        link.href = capturedImageData;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        console.log(' Image downloaded');
-    }
-}
-
 // Send image to prediction API
 async function sendToPredictionAPI(imageDataUrl) {
     try {
@@ -201,7 +187,7 @@ function displayPredictionResults(data) {
         });
         
         if (recommendations.length > 0) {
-            message += '\n💡 Recommendations:\n';
+            message += '\nRecommendations:\n';
             recommendations.forEach(rec => {
                 message += `• ${rec}\n`;
             });
@@ -210,6 +196,8 @@ function displayPredictionResults(data) {
         message += 'No items detected with high confidence.';
     }
     
+    
+
     alert(message);
 }
 
