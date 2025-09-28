@@ -97,14 +97,8 @@ function takeSnapshot() {
 
 // Retake photo function
 function retakePhoto() {
-    document.getElementById('cameraContainer').style.display = 'block';
-    document.getElementById('capturedContainer').style.display = 'none';
-    document.getElementById('takeSnapshotBtn').style.display = 'block';
-    document.getElementById('actionButtons').style.display = 'none';
-    capturedImageData = null;
-    const panel = document.getElementById('predictionPanel');
-    if (panel) panel.style.display = 'none';
-    console.log('Retaking photo');
+    // Refresh the page to reset all states
+    window.location.reload();
 }
 
 // Send image to prediction API
