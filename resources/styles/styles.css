@@ -72,20 +72,24 @@ body, .app-title, .app-subtitle, .gaia-info, .fun-facts, .footer, .main-containe
     color: #49705B;
 }
 .vines-bottom {
-    position: absolute;
-    bottom: -90px;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    z-index: 2;
+  position: absolute;
+  bottom: -60px; /* Adjust this to overlap the white border just right */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Or 35% if you want it narrower */
+  pointer-events: none;
+  z-index: 2;
 }
+
+
 .vines-top {
-    position: absolute;
-    top: -30px;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    z-index: 2;
+  position: absolute;
+  bottom: 150px; /* Adjust this to overlap the white border just right */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Or 35% if you want it narrower */
+  pointer-events: none;
+  z-index: 2;
 }
 .preview-section {
     position: relative;
