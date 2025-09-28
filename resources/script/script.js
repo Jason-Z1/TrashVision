@@ -58,7 +58,7 @@ function startFactRotation() {
 function setupEventListeners() {
     document.getElementById('takeSnapshotBtn').addEventListener('click', takeSnapshot);
     document.getElementById('retakeBtn').addEventListener('click', retakePhoto);
-    document.getElementById('downloadBtn').addEventListener('click', downloadImage);
+    document.getElementById('fileInput').addEventListener('change', handleFileUpload);
 }
 
 // Take snapshot function
@@ -99,6 +99,46 @@ function takeSnapshot() {
 function retakePhoto() {
     // Refresh the page to reset all states
     window.location.reload();
+}
+
+// Handle file upload
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Check if it's an image file
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        return;
+    }
+    
+    console.log('File uploaded:', file.name);
+    
+    // Create FileReader to convert file to data URL
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imageDataUrl = e.target.result;
+        
+        // Display the uploaded image in the captured image container
+        const capturedImgElem = document.getElementById('capturedImage');
+        capturedImgElem.src = 'Images/Loading-Bar.gif';
+        document.getElementById('cameraContainer').style.display = 'none';
+        document.getElementById('capturedContainer').style.display = 'block';
+        document.getElementById('takeSnapshotBtn').style.display = 'none';
+        document.querySelector('.file-upload-container').style.display = 'none';
+        document.getElementById('actionButtons').style.display = 'block';
+        
+        // Show the actual uploaded image after a brief delay
+        setTimeout(() => {
+            capturedImgElem.src = imageDataUrl;
+            // Send to prediction API
+            sendToPredictionAPI(imageDataUrl);
+            console.log('File uploaded and processed successfully');
+        }, 1000);
+    };
+    
+    // Read the file as data URL
+    reader.readAsDataURL(file);
 }
 
 // Send image to prediction API
