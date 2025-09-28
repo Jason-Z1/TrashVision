@@ -1,35 +1,11 @@
-/* Add space above 'Recommendations' header in prediction panel */
-.prediction-panel strong {
-    display: block;
-    margin-top: 1.2em;
-}
-/* Add space above recommendations section in prediction panel */
-.prediction-panel ul {
-    margin-top: 1.2em;
-}
-/* Make recyclable/non-recyclable icon and text smaller in prediction panel */
-.prediction-panel .line strong {
-    font-size: 0.85em;
-}
-/* Make 'Recommendations' heading larger in prediction panel */
-.prediction-panel strong {
-    font-size: 1.25em;
-}
-/* Make recommendations text larger in prediction panel */
-.prediction-panel ul, .prediction-panel li {
-    font-size: 1.25em;
-}
 /* Left goddess image wrapper */
 .image-left-wrapper {
-    grid-column: 1;
-    justify-self: center;
-    min-width: 100px;
-    max-width: 200px;
-    width: 100%;
+    flex: 0 1 20vw;
+    min-width: 180px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
 }
 
 .image-left-wrapper .slideUp {
@@ -43,40 +19,35 @@
 
 /* Flex row for camera preview and goddess image */
 .preview-row {
-    display: grid;
-    grid-template-columns: 150px 1fr 150px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-items: center;
-    width: 100%;
-    max-width: 1400px;
-    margin: 2rem auto;
-    position: relative;
-    overflow: visible;
-    gap: 1vw;
+    justify-content: center;
+    gap: 2vw;
+    width: 100vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 0 2vw;
 }
 
 .preview-row .preview-section {
-    grid-column: 2;
-    justify-self: center;
-    width: 100%;
-    max-width: 80vw;
-    min-width: 500px;
+    flex: 3 1 50vw;
+    min-width: 300px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .preview-row .image-right-wrapper {
-    grid-column: 3;
-    justify-self: center;
-    min-width: 100px;
-    max-width: 200px;
-    width: 100%;
+    flex: 0 1 20vw;
+    min-width: 180px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
 }
+
 .preview-row .slideUp {
     width: 100%;
     max-width: 20vw;
@@ -133,12 +104,13 @@
     background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    margin-bottom: 0.6rem;
          background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
 }
 
 /* Greek-inspired font stack; you can add a webfont later (GFS Didot, Cardo, Cormorant) */
 .app-title {
-    font-family: papyrus, fantasy;
+    font-family: 'Cormorant Garamond', 'GFS Didot', Georgia, 'Times New Roman', serif;
     color: white
 }
 
@@ -188,10 +160,9 @@ body {
 
 .app-subtitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
-    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(255,255,255,0.95);
-    margin: 0;
-    margin-top: -25px;
+    margin-top: 0.6vh;
     text-align: center;
     animation: fadeIn 1s ease-out forwards;
     background: rgba(255,255,255,0.08);
@@ -212,31 +183,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 5% 2rem 5%;
+    padding: 2vh 2vw;
     animation: fadeIn 1s ease-out forwards;
 }
 
 .main-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2vh;
 }
 
 .app-title {
-    font-size: 3rem;
+    font-size: clamp(2.4rem, 6.8vw, 4rem);
     font-weight: 900;
-    margin-top: 2rem;
-    margin-bottom: 0;
     color: #fff !important;
     -webkit-text-fill-color: #fff;
     background-clip: border-box;
     text-align: center;
     margin-top: 1.2vh;
     margin-bottom: 0;
-    text-transform: none;
+    text-transform: uppercase;
     letter-spacing: 0.06em;
     background: white;
     background-clip: text;
@@ -249,14 +218,15 @@ body {
 
 
 .preview-section {
-    position: relative; 
-    width: auto;
+    position: relative;
+    width: 100%;
     background-color: white;
-    border-radius: clamp(18px, 2.5vw, 25px);    
-    padding: clamp(1rem, 2vw, 1.5rem);
-    box-shadow: 0 1vh 4vh rgba(0, 0, 0, 0.15); 
+    border-radius: clamp(15px, 2vw, 20px);
+    padding: clamp(0.8rem, 2vw, 1rem);
+    box-shadow: 0 1vh 4vh rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
-    display: inline-block;
+    max-width: 50vw;
+    min-width: 300px;
 }
 
 .camera-preview-container {
@@ -266,13 +236,11 @@ body {
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: clamp(15px, 2vw, 20px);
+    border-radius: clamp(12px, 1.5vw, 15px);
     overflow: visible;
     aspect-ratio: 16/9;
     max-width: 100%;
-    min-width: 400px;
-    max-height: 65vh;
-    min-height: 300px;
+    max-height: 50vh;
 }
 
 .video-stream {
@@ -293,7 +261,7 @@ body {
     border-radius: clamp(12px, 1.5vw, 15px);
     overflow: hidden;
     aspect-ratio: 16/9;
-    max-height: 60vh;
+    max-height: 40vh;
 }
 
 .captured-image {
@@ -310,7 +278,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1vh;
 }
 
 .primary-controls {
@@ -353,10 +321,10 @@ body {
 }
 
 .btn {
-    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(1rem, 2.5vw, 1.5rem);
+    padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(1.5rem, 3vw, 2rem);
     border: none;
     border-radius: 50px;
-    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -405,12 +373,12 @@ body {
     .app {
         padding: 1vh 2vw;
     }
-    
+
     .main-container {
         gap: 1.5vh;
         max-width: 95vw;
     }
-    
+
     .preview-section {
         padding: 1.5vh 2vw;
         max-width: 80vw;
@@ -421,13 +389,13 @@ body {
         align-items: center;
         width: 100%;
     }
-    
+
     .primary-controls {
         flex-direction: column;
         gap: 1rem;
         width: 100%;
     }
-    
+
     .btn-capture, .btn-upload {
         width: 100%;
         max-width: clamp(250px, 60vw, 300px);
@@ -439,29 +407,29 @@ body {
     .app {
         padding: 0.5vh 1vw;
     }
-    
+
     .main-container {
         gap: 1vh;
         max-width: 98vw;
     }
-    
+
     .preview-section {
         padding: 1vh 2vw;
         max-width: 95vw;
         min-width: 280px;
     }
-    
+
     .camera-preview-container,
     .captured-image-container {
         aspect-ratio: 1/1;
         max-height: 60vh;
     }
-    
+
     .btn {
         padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.2rem, 4vw, 1.5rem);
         font-size: clamp(0.85rem, 2.2vw, 0.95rem);
     }
-    
+
     .btn-capture {
         padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2rem);
         font-size: clamp(0.9rem, 2.4vw, 1rem);
@@ -470,21 +438,25 @@ body {
 
 .fact-bar {
     position: relative;
-    max-width: 80vw; 
-    width: 60%;
+    width: 100%;
+    max-width: 90vw;
+           background: linear-gradient(90deg, #B6862C 0%, #E6C36F 50%, #B6862C 100%);
+        bottom: 0;
+        width: 100%;
     backdrop-filter: blur(10px);
-    border-radius: clamp(8px, 1.5vw, 12px);
+    border-radius: clamp(10px, 2vw, 15px);
     text-align: center;
-    padding: 1vh 2vw;
-    margin: 0.5vh 0;
+    padding: 2vh 3vw;
+    margin-top: 2vh;
     z-index: 10;
     font-family: 'Segoe UI', sans-serif;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border: 3.4px solid #B6862C;
 }
 
 .fact-text {
     font-size: clamp(0.8rem, 2vw, 1rem);
+    animation: fadeInOut 10s ease-in-out infinite;
     color:white;
         /* text-shadow removed for no glow */
     animation: fadeInOut 10s ease-in-out infinite;
@@ -494,8 +466,8 @@ body {
 
 .slideUp {
     animation: slideUp 1s ease-out forwards;
-    width: clamp(250px, 20vw, 320px);
-    max-width: 30vw;
+    width: clamp(180px, 15vw, 220px);
+    max-width: 20vw;
     height: auto;
     display: block;
     position: static;
@@ -549,24 +521,24 @@ body {
     text-align: center;
     box-shadow: 0 0.8vh 4vh rgba(0,0,0,0.15);
     color: #113322;
-    font-size: clamp(3rem, 4vw, 3rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
     font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
     z-index: 60;
 }
 
 .prediction-panel h4 { 
     margin: 0 0 0.3rem 0; 
-    font-size: clamp(2rem, 3vw, 2rem); 
+    font-size: clamp(0.9rem, 2vw, 1.15rem); 
 }
 
 .prediction-panel .line { 
     margin: 0.4rem 0; 
-    font-size: 2rem, 4vw, 2rem; 
+    font-size: clamp(0.85rem, 1.9vw, 1.05rem); 
 }
 
 .thank-you {
     margin-top: 8px;
-    font-size: clamp(1.5rem, 3vw, 1.5rem);
+    font-size: clamp(0.82rem, 1.6vw, 0.95rem);
     color: #2a6a3b;
     opacity: 0.95;
 }
@@ -604,7 +576,5 @@ body {
 
 @media (max-width: 480px) {
     .prediction-panel { 
-        font-size: clamp(2.5rem, 4vw, 2.5rem); 
+        font-size: clamp(0.75rem, 2.2vw, 0.88rem); 
         padding: clamp(0.3rem, 1.5vw, 0.5rem); 
-    }
-}
