@@ -189,12 +189,17 @@ function displayPredictionResults(data) {
     let message = 'Prediction Results:\n\n';
     
     if (items.length > 0) {
-        items.forEach((item, index) => {
-            const confidence = Math.round(item.confidence * 100);
-            const icon = item.recyclable ? '♻️' : '🗑️';
-            message += `${icon} ${item.type} (${confidence}% confidence)\n`;
+        // Find the item with the highest confidence
+        const highestConfidenceItem = items.reduce((prev, current) => {
+            return (prev.confidence > current.confidence) ? prev : current;
         });
         
+        // Display only the highest confidence prediction
+        const confidence = Math.round(highestConfidenceItem.confidence * 100);
+        const icon = highestConfidenceItem.recyclable ? '♻️' : '🗑️';
+        message += `${icon} ${highestConfidenceItem.type} (${confidence}% confidence)\n`;
+        
+        // Show recommendations for the highest confidence item
         if (recommendations.length > 0) {
             message += '\nRecommendations:\n';
             recommendations.forEach(rec => {
@@ -212,12 +217,15 @@ function displayPredictionResults(data) {
     if (panel) {
         let html = '<h4>Prediction Results</h4>';
         if (items.length > 0) {
-            html += '<div class="lines">';
-            items.forEach((item) => {
-                const confidence = Math.round(item.confidence * 100);
-                const icon = item.recyclable ? '♻️' : '🗑️';
-                html += `<div class="line">${icon} <strong>${item.type}</strong> — ${confidence}%</div>`;
+            // Find and display only the highest confidence item
+            const highestConfidenceItem = items.reduce((prev, current) => {
+                return (prev.confidence > current.confidence) ? prev : current;
             });
+            
+            html += '<div class="lines">';
+            const confidence = Math.round(highestConfidenceItem.confidence * 100);
+            const icon = highestConfidenceItem.recyclable ? '♻️' : '🗑️';
+            html += `<div class="line">${icon} <strong>${highestConfidenceItem.type}</strong> — ${confidence}%</div>`;
             html += '</div>';
 
             if (recommendations.length > 0) {
