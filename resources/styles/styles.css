@@ -456,6 +456,37 @@ body {
     opacity: 0.95;
 }
 
+/* Goddess figure caption overlay */
+.goddess-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.goddess-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.goddess-caption {
+    position: static;
+    transform: none;
+    margin-top: 0.6rem;
+    background: rgba(255,255,255,0.95);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    color: #214b32;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+    .goddess-caption { margin-top: 0.4rem; padding: 5px 8px; }
+}
+
 @media (max-width: 480px) {
     .prediction-panel { 
         font-size: clamp(0.75rem, 2.2vw, 0.88rem); 
