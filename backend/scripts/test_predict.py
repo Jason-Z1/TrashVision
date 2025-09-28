@@ -1,12 +1,12 @@
 """
-Simple smoke-test script that POSTs a sample image to the local /predict endpoint and prints the response.
+Flask web server for TrashVision - serves the web app and handles predictions
 Usage:
-python backend/scripts/test_predict.py path/to/test.jpg
+python backend/scripts/test_predict.py
 """
 import sys
 import os
 import requests
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, render_template_string
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -14,7 +14,39 @@ from pathlib import Path
 env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
-app = Flask(__name__)
+# Get the project root directory (two levels up from this script)
+project_root = Path(__file__).resolve().parent.parent.parent
+
+# Configure Flask app to serve static files from the project root
+app = Flask(__name__, 
+            static_folder=str(project_root), 
+            static_url_path='')
+
+@app.route("/")
+def home():
+    """Serve the main HTML page"""
+    try:
+        # Read and serve the index.html file
+        html_path = project_root / "index.html"
+        with open(html_path, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        return html_content
+    except FileNotFoundError:
+        return """
+        <h1>TrashVision Server Running</h1>
+        <p>HTML file not found. Please ensure index.html is in the project root.</p>
+        <p>Server is ready to accept predictions at /predict</p>
+        """, 404
+
+@app.route("/resources/<path:filename>")
+def serve_resources(filename):
+    """Serve CSS, JS, and other resource files"""
+    return send_from_directory(project_root / "resources", filename)
+
+@app.route("/Images/<path:filename>")
+def serve_images(filename):
+    """Serve image files"""
+    return send_from_directory(project_root / "Images", filename)
 
 # CORS handling
 @app.after_request
@@ -231,11 +263,15 @@ def test_prediction_endpoint(image_path):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        # Start the Flask server
-        print("Starting Flask server for predictions...")
-        print("Server will be available at: http://localhost:5000")
-        print("To test with an image, run: python test_predict.py path/to/image.jpg")
-        app.run(debug=True, port=5000)
+        # Start the Flask web server
+        print("🚀 Starting TrashVision Flask Web Server...")
+        print("📱 Web App will be available at: http://localhost:5000")
+        print("🔍 Prediction API available at: http://localhost:5000/predict")
+        print("🛑 Press Ctrl+C to stop the server")
+        print("=" * 50)
+        
+        # Start the server with host='0.0.0.0' for web service compatibility
+        app.run(debug=True, host='0.0.0.0', port=5000)
     else:
         # Test mode - send an image to the server
         image_path = sys.argv[1]

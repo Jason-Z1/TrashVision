@@ -121,7 +121,7 @@ async function sendToPredictionAPI(imageDataUrl) {
         formData.append('image', blob, 'snapshot.jpg');
         
         // Send to Flask API
-        const response = await fetch('http://localhost:5000/predict', {
+        const response = await fetch('/predict', {
             method: 'POST',
             body: formData
         });
