@@ -3,6 +3,7 @@ let videoStream = null;
 let capturedImageData = null;
 
 // Facts array for rotation
+// Intended for other web page functionality, did not get to implement
 const facts = [
     "Recycling a single aluminum can saves enough energy to power a TV for three hours.",
     "Gaia (Mother Earth) is the oldest Greek deity—reminding us that the planet is the original resource.",
