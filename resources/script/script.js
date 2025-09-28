@@ -102,7 +102,8 @@ function retakePhoto() {
     document.getElementById('takeSnapshotBtn').style.display = 'block';
     document.getElementById('actionButtons').style.display = 'none';
     capturedImageData = null;
-    
+    const panel = document.getElementById('predictionPanel');
+    if (panel) panel.style.display = 'none';
     console.log('Retaking photo');
 }
 
@@ -198,7 +199,40 @@ function displayPredictionResults(data) {
     
     
 
-    alert(message);
+    // Instead of an alert, render the summary into the on-screen prediction panel
+    const panel = document.getElementById('predictionPanel');
+    if (panel) {
+        let html = '<h4>Prediction Results</h4>';
+        if (items.length > 0) {
+            html += '<div class="lines">';
+            items.forEach((item) => {
+                const confidence = Math.round(item.confidence * 100);
+                const icon = item.recyclable ? '♻️' : '🗑️';
+                html += `<div class="line">${icon} <strong>${item.type}</strong> — ${confidence}%</div>`;
+            });
+            html += '</div>';
+
+            if (recommendations.length > 0) {
+                html += '<div style="margin-top:6px; font-size:0.9rem;"><strong>Recommendations:</strong><ul>';
+                recommendations.forEach(rec => { html += `<li>${rec}</li>`; });
+                html += '</ul></div>';
+            }
+        } else {
+            html += '<div class="line">No items detected with high confidence.</div>';
+        }
+
+        panel.innerHTML = html;
+        panel.style.display = 'block';
+        // Also populate the captured view panel (if present)
+        const panelCaptured = document.getElementById('predictionPanel_captured');
+        if (panelCaptured) {
+            panelCaptured.innerHTML = html;
+            panelCaptured.style.display = 'block';
+        }
+    } else {
+        // Fallback to alert if panel not found
+        alert(message);
+    }
 }
 
 // Cleanup function when page unloads
