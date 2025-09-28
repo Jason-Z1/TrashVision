@@ -100,11 +100,11 @@
 }
 .vines-bottom {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    top: -25%;
+    left: -5%;
+    width: 110%;
     height: auto;
-    max-height: 20%;
+    max-height: 40%;
     pointer-events: none;
     z-index: 3;
     object-fit: cover;
@@ -112,11 +112,11 @@
 
 .vines-top {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    bottom: -30%;
+    left: -5%;
+    width: 110%;
     height: auto;
-    max-height: 20%;
+    max-height: 40%;
     pointer-events: none;
     z-index: 3;
     object-fit: cover;
@@ -131,7 +131,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Papyrus", cursive;
-    background: linear-gradient(135deg, #e2ebe3 0%, #e2ebe3 100%);
+    background: linear-gradient(135deg, #2d5016 0%, #4a6b2a 25%, #6b8e47 50%, #4a5c2a 75%, #2f3d1a 100%);
     min-height: 100vh;
     color: #49705B;
     width: 100vw;
@@ -200,7 +200,7 @@ body {
     align-items: center;
     background-color: white;
     border-radius: clamp(12px, 1.5vw, 15px);
-    overflow: hidden;
+    overflow: visible;
     aspect-ratio: 16/9;
     max-width: 100%;
     max-height: 50vh;
@@ -354,22 +354,27 @@ body {
 }
 
 .fact-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
-    color: white;
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    background: rgba(26, 61, 31, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: clamp(10px, 2vw, 15px);
     text-align: center;
-    padding: 1vh 2vw;
-    z-index: 1000;
+    padding: 2vh 3vw;
+    margin-top: 2vh;
+    z-index: 10;
     font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .fact-text {
     font-size: clamp(0.8rem, 2vw, 1rem);
-    animation: fadeInOut 10s ease-in-out infinite;
+    color: #39ff39;
+    text-shadow: 0 0 10px #39ff39, 0 0 20px #39ff39, 0 0 30px #39ff39;
+    animation: breathingGlow 3s ease-in-out infinite, fadeInOut 10s ease-in-out infinite;
+    font-weight: 600;
+    margin: 0;
 }
 
 .slideUp {
@@ -398,6 +403,21 @@ body {
     10%  { opacity: 1; }
     90%  { opacity: 1; }
     100% { opacity: 0; }
+}
+
+@keyframes breathingGlow {
+    0% { 
+        text-shadow: 0 0 5px #39ff39, 0 0 10px #39ff39, 0 0 15px #39ff39;
+        opacity: 0.8;
+    }
+    50% { 
+        text-shadow: 0 0 10px #39ff39, 0 0 20px #39ff39, 0 0 30px #39ff39, 0 0 40px #39ff39;
+        opacity: 1;
+    }
+    100% { 
+        text-shadow: 0 0 5px #39ff39, 0 0 10px #39ff39, 0 0 15px #39ff39;
+        opacity: 0.8;
+    }
 }
 
 .prediction-panel {
