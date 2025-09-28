@@ -6,3 +6,4 @@ requests==2.31.0
 azure-cognitiveservices-vision-customvision==3.0.0
 msrest==0.7.1
 python-dotenv==1.0.0
+flask==2.3.3

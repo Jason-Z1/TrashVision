@@ -19,9 +19,6 @@ backend/.venv/
 backend/.env
 backend/.env.local
 
-# Training data (images) - don't commit your full datasets
-backend/data/
-
 # IDEs and editors
 .vscode/
 .idea/
