@@ -1,4 +1,6 @@
-const { useRef, useEffect, useState } = React;
+// Vanilla JavaScript for TrashVision Camera App
+let videoStream = null;
+let capturedImageData = null;
 
 function FactBar() {
   const [currentFactIndex, setCurrentFactIndex] = React.useState(0);
@@ -137,7 +139,7 @@ function CameraPreview() {
     if (capturedImage) {
       const link = document.createElement('a');
       link.download = `snapshot_${new Date().getTime()}.jpg`;
-      
+      link.href = capturedImage;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -237,18 +239,16 @@ function CameraPreview() {
             </div>
           )}
         </div>
-
-        
-        
       </div>
     </div>
   );
 }
 
 
-// Actually render CameraPreview on page
+// Actually render both components on page
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<CameraPreview />);
+const factRoot = ReactDOM.createRoot(document.getElementById("fact-bar"));
 
-ReactDOM.render(<FactBar />, document.getElementById("fact-bar"));
+root.render(<CameraPreview />);
+factRoot.render(<FactBar />);
 
