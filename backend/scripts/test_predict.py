@@ -16,6 +16,8 @@ load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)
 
+@app.route("/")
+
 # CORS handling
 @app.after_request
 def after_request(response):
