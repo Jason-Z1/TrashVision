@@ -79,17 +79,20 @@ function takeSnapshot() {
     // Convert to image data
     capturedImageData = canvas.toDataURL('image/jpeg', 0.8);
     
-    // Show captured image
-    document.getElementById('capturedImage').src = capturedImageData;
+    // Temporarily show loading bar GIF, then show captured image
+    const capturedImgElem = document.getElementById('capturedImage');
+    capturedImgElem.src = 'Images/Loading-Bar.gif';
     document.getElementById('cameraContainer').style.display = 'none';
     document.getElementById('capturedContainer').style.display = 'block';
     document.getElementById('takeSnapshotBtn').style.display = 'none';
     document.getElementById('actionButtons').style.display = 'block';
-    
-    // Send to prediction API
-    sendToPredictionAPI(capturedImageData);
-    
-    console.log('📸 Snapshot taken successfully');
+
+    setTimeout(() => {
+        capturedImgElem.src = capturedImageData;
+        // Send to prediction API after showing the real image
+        sendToPredictionAPI(capturedImageData);
+        console.log('📸 Snapshot taken successfully');
+    }, 1000);
 }
 
 // Retake photo function
