@@ -227,6 +227,7 @@ body {
     backdrop-filter: blur(10px);
     max-width: 50vw;
     min-width: 300px;
+    overflow: visible;
 }
 
 .camera-preview-container {
@@ -272,13 +273,17 @@ body {
 }
 
 .controls-section {
-    width: 100%;
+    position: absolute;
+    bottom: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 1vh;
+    z-index: 10;
 }
 
 .primary-controls {
@@ -441,7 +446,7 @@ body {
     width: 100%;
     max-width: 90vw;
            background: transparent;
-        bottom: 0;
+        bottom: -90px;
         width: 60%;
     backdrop-filter: blur(10px);
     border-radius: clamp(10px, 2vw, 15px);

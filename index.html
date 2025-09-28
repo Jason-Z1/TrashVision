@@ -22,50 +22,53 @@
 
          <!-- Camera + Goddess Row (centered camera, goddess images left and right) -->
          <div class="preview-row">
-           <div class="image-left-wrapper">
-              <figure class="goddess-figure">
-                 <img src="Images/Goddess.png" class="slideUp" alt="Greek Goddess Right" />
-                 <figcaption class="goddess-caption">Goddess of Earth</figcaption>
-              </figure>
-           </div>
-           <div class="preview-section">
-           <div id="cameraContainer" class="camera-preview-container" style="position:relative;">
-              <video id="videoStream" autoplay playsinline class="video-stream"></video>
-              <img src="Images/vines_bottom.png" class="vines-bottom" alt="Vines Bottom">
-              <img src="Images/vines_bottom.png" class="vines-top" alt="Vines Top">
-              <!-- Prediction panel moved inside camera container so it can fill the entire camera box -->
-              <div id="predictionPanel" class="prediction-panel" style="display: none;" aria-live="polite"></div>
-           </div>
-              <div id="capturedContainer" class="captured-image-container" style="display: none;">
-                 <img id="capturedImage" class="captured-image" alt="Captured snapshot" />
-                 <!-- Duplicate prediction panel for captured view so the panel covers the captured image as well -->
-                 <div id="predictionPanel_captured" class="prediction-panel" style="display: none;" aria-live="polite"></div>
-              </div>
-              
-             
-           </div>
-           <div class="image-right-wrapper">
-              <figure class="goddess-figure">
-                 <img src="Images/GreekGoddessRight.png" class="slideUp" alt="Greek Goddess Left" />
-                 <figcaption class="goddess-caption">Goddess of Earth</figcaption>
-              </figure>
-           </div>
-         </div>
-
-
-         <!-- Controls -->
-         <div class="controls-section">
-            <div class="primary-controls">
-               <button id="takeSnapshotBtn" class="btn btn-capture">Take Snapshot</button>
-               <div class="file-upload-container">
-                  <input type="file" id="fileInput" class="file-input" accept="image/*" />
-                  <label for="fileInput" class="btn btn-upload">Upload Photo</label>
+            <div class="image-left-wrapper">
+               <figure class="goddess-figure">
+                  <img src="Images/Goddess.png" class="slideUp" alt="Greek Goddess Right" />
+                  <figcaption class="goddess-caption">Goddess of Earth</figcaption>
+               </figure>
+            </div>
+            <div class="preview-section">
+               <div id="cameraContainer" class="camera-preview-container" style="position:relative;">
+                  <video id="videoStream" autoplay playsinline class="video-stream"></video>
+                  <img src="Images/vines_bottom.png" class="vines-bottom" alt="Vines Bottom">
+                  <img src="Images/vines_bottom.png" class="vines-top" alt="Vines Top">
+                  <!-- Prediction panel moved inside camera container so it can fill the entire camera box -->
+                  <div id="predictionPanel" class="prediction-panel" style="display: none;" aria-live="polite"></div>
                </div>
+               <div id="capturedContainer" class="captured-image-container" style="display: none;">
+                  <img id="capturedImage" class="captured-image" alt="Captured snapshot" />
+                  <!-- Duplicate prediction panel for captured view so the panel covers the captured image as well -->
+                  <div id="predictionPanel_captured" class="prediction-panel" style="display: none;" aria-live="polite">
+                  </div>
+               </div>
+
+               <!-- Controls -->
+               <div class="controls-section">
+                  <div class="primary-controls">
+                     <button id="takeSnapshotBtn" class="btn btn-capture">Take Snapshot</button>
+                     <div class="file-upload-container">
+                        <input type="file" id="fileInput" class="file-input" accept="image/*" />
+                        <label for="fileInput" class="btn btn-upload">Upload Photo</label>
+                     </div>
+                  </div>
+                  <div id="actionButtons" class="action-buttons" style="display: none;">
+                     <button id="retakeBtn" class="btn btn-secondary">Retake</button>
+                  </div>
+               </div>
+
+
             </div>
-            <div id="actionButtons" class="action-buttons" style="display: none;">
-               <button id="retakeBtn" class="btn btn-secondary">Retake</button>
+            <div class="image-right-wrapper">
+               <figure class="goddess-figure">
+                  <img src="Images/GreekGoddessRight.png" class="slideUp" alt="Greek Goddess Left" />
+                  <figcaption class="goddess-caption">Goddess of Earth</figcaption>
+               </figure>
             </div>
          </div>
+
+
+
 
          <!-- Fact Bar moved below camera -->
          <div class="fact-bar">
