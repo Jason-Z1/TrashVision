@@ -67,13 +67,17 @@ def run_prediction(image):
         training_key = os.getenv('TRAINING_KEY')  # Fallback option
         prediction_endpoint = os.getenv('PREDICTION_ENDPOINT') 
         project_id = os.getenv('PROJECT_ID')
-        published_name = os.getenv('PUBLISHED_NAME', 'trashvision-v1')
+        published_name = os.getenv('PUBLISHED_NAME', 'trashvision-version2')
         
         # Common iteration names to try if the provided one fails
         iteration_names_to_try = [
             published_name,
             'RecycleSmart-Prediction',
-            'RecycleSmart'
+            'RecycleSmart', 
+            'trashvision-v3',
+            'trashvision-version2',
+            'trashvision-v1',
+            'latest'
         ]
         
         # Basic configuration validation
