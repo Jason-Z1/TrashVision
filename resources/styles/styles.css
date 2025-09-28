@@ -424,3 +424,28 @@ body {
     .preview-wrapper { flex-direction: column; }
     .preview-side { width: auto; }
 }
+
+/* Prediction panel that appears inside the camera preview area */
+.prediction-panel {
+    position: absolute;
+    inset: 0; /* fill the entire camera container */
+    margin: 0; 
+    background: rgba(255,255,255,0.96);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    color: #113322;
+    font-size: 1rem;
+    z-index: 60;
+}
+.prediction-panel h4 { margin: 0 0 0.3rem 0; font-size: 1.15rem; }
+.prediction-panel .line { margin: 0.4rem 0; font-size: 1.05rem; }
+
+@media (max-width: 480px) {
+    .prediction-panel { font-size: 0.88rem; padding: 0.5rem; }
+}
