@@ -141,10 +141,15 @@ body {
 .app-subtitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #49705B;
-    margin-top: 0.2vh;
+    color: rgba(255,255,255,0.95);
+    margin-top: 0.6vh;
     text-align: center;
     animation: fadeIn 1s ease-out forwards;
+    background: rgba(255,255,255,0.08);
+    padding: 6px 14px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    backdrop-filter: blur(4px) saturate(120%);
 }
 
 @keyframes fadeIn {
@@ -172,12 +177,34 @@ body {
 }
 
 .app-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.4rem, 6.8vw, 4rem);
     font-weight: 900;
-    color: rgb(2, 39, 18);
-    text-align: right;
-    margin-top: 2vh;
+    color: #062b12; /* fallback color */
+    text-align: center;
+    margin-top: 1.2vh;
     margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: linear-gradient(90deg, #eafaf0 0%, #b6f2c3 40%, #7ad07b 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 12px 24px rgba(6,43,18,0.25));
+    position: relative;
+}
+
+/* subtle glowing outline behind the title */
+.app-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55%;
+    width: 120%;
+    height: 40%;
+    background: radial-gradient(closest-side, rgba(122,208,123,0.18), transparent 60%);
+    z-index: -1;
+    filter: blur(18px);
 }
 
 .preview-section {
