@@ -6,17 +6,51 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Gaia's Guardians</title>
    <link rel="stylesheet" href="./resources/styles/styles.css">
-   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 
 <body>
-   <div id="root"></div>
-   <script type="text/babel" src="./resources/script/script.js"></script>
-   <img src="Images/GreekGoddess.png" class = "slideUp" />
-   
+   <div class="app">
+      <div class="main-container">
+         <h1 class="app-title">Gaia's Guardians</h1>
+         <p class="app-subtitle">Be a Guardian inspired by Gaia, one recycled item at a time.</p>
+         
+         <!-- Fact Bar -->
+         <div class="fact-bar">
+            <p id="factText" class="fact-text fade">
+               Recycling a single aluminum can saves enough energy to power a TV for three hours.
+            </p>
+         </div>
 
+         <!-- Camera Section -->
+         <div class="preview-section">
+            <div id="cameraContainer" class="camera-preview-container">
+               <video id="videoStream" autoplay playsinline class="video-stream"></video>
+            </div>
+            <div id="capturedContainer" class="captured-image-container" style="display: none;">
+               <img id="capturedImage" class="captured-image" alt="Captured snapshot" />
+            </div>
+         </div>
+
+         <!-- Goddess Image -->
+         <div class="image-right-wrapper">
+            <img src="Images/GreekGoddess.png" class="slideUp" alt="Greek Goddess" />
+         </div>
+
+         <!-- Controls -->
+         <div class="controls-section">
+            <button id="takeSnapshotBtn" class="btn btn-capture">Take Snapshot</button>
+            <div id="actionButtons" class="action-buttons" style="display: none;">
+               <button id="retakeBtn" class="btn btn-secondary">Retake</button>
+               <button id="downloadBtn" class="btn btn-primary">Download</button>
+            </div>
+         </div>
+
+         <!-- Hidden canvas for image capture -->
+         <canvas id="captureCanvas" style="display: none;"></canvas>
+      </div>
+   </div>
+
+   <script src="./resources/script/script.js"></script>
 
 </body>
 

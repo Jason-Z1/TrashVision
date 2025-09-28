@@ -133,26 +133,26 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 25px rgba(159, 124, 97, 0.4);
 }
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.9);
-    color: #555;
-    border: 2px solid rgba(102, 126, 234, 0.2);
+    color: #ebc495;
+    border: 2px solid rgba(77, 48, 3, 0.2);
 }
 
 
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 1);
+    background: rgb(156, 115, 68);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-capture {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100);
-    color: rgb(78, 44, 201);
+    background: linear-gradient(135deg, #683d09 0%, #ffa500 100);
+    color: rgb(52, 31, 1);
     padding: 1.25rem 3rem;
     font-size: 1.25rem;
     min-width: 200px;
@@ -170,13 +170,7 @@ body {
     justify-content: center;
 }
 
-.action-buttons .btn {
-    min-width: 150px;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-}
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .app {
         padding: 1rem 5% 1rem 5%;
@@ -193,49 +187,20 @@ body {
     .preview-section {
         padding: 1.5rem;
     }
-    
-    .camera-preview-container,
-    .captured-image-container {
-        aspect-ratio: 4/3;
-    }
-    
+
     .action-buttons {
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
     
-    .action-buttons .btn {
-        width: 100%;
-        max-width: 250px;
-        min-width: unset;
-    }
-    
+
     .btn-capture {
         width: 100%;
         max-width: 300px;
         min-width: unset;
-    }
-}
-.slideUp {
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 500px;
-  z-index: 999;
-  animation: slideUp 1s ease-out forwards;
-}
+    }}
 
-@keyframes slideUp {
-  from {
-    transform: translateY(900px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 @media (max-width: 480px) {
     .app {
@@ -263,13 +228,92 @@ body {
     .btn {
         padding: 0.9rem 1.5rem;
         font-size: 0.95rem;
-    }
+  }
     
     .btn-capture {
         padding: 1rem 2rem;
         font-size: 1rem;
+  
     }
-    
+}
+
+.fact-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #a37313, #e0a255, #d8b677, #e0a255, #a37313);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.fact-text {
+  font-size: 1rem;
+  animation: fadeInOut 10s ease-in-out infinite;
+}
+
+
+.slideUp {
+  animation: slideUp 1s ease-out forwards;
+  position: fixed;
+  top: 50px;       /* distance from top of screen */
+  right: 30px;     /* distance from right edge */
+  width: 30vw;     /* 25% of viewport width */
+  max-width: 900px;
+  height: auto;
+  z-index: 999;    /* make sure it’s above other content */
+  animation: slideUp 1s ease-out forwards;
 
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+/* Layout for preview + side image */
+.preview-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.preview-section {
+    flex: 1 1 0;
+    max-width: 900px;
+}
+
+.preview-side {
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .preview-wrapper { gap: 0.75rem; }
+    .preview-side { width: 110px; }
+}
+
+@media (max-width: 700px) {
+    .preview-wrapper { flex-direction: column; }
+    .preview-side { width: auto; }
+}
