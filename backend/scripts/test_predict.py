@@ -17,6 +17,8 @@ load_dotenv(dotenv_path=env_path)
 app = Flask(__name__)
 
 @app.route("/")
+def home():
+    return "Hello, world! The server is running."
 
 # CORS handling
 @app.after_request
