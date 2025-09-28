@@ -94,6 +94,24 @@
 .title-icon.left { transform: translateX(-4px); }
 .title-icon.right { transform: translateX(4px); }
 
+/* Decorative title box to highlight the main heading */
+.title-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    margin-bottom: 0.6rem;
+}
+
+/* Greek-inspired font stack; you can add a webfont later (GFS Didot, Cardo, Cormorant) */
+.app-title {
+    font-family: 'Cormorant Garamond', 'GFS Didot', Georgia, 'Times New Roman', serif;
+}
+
 @media (max-width: 480px) {
     .title-icon { width: 36px; height: 36px; }
     .app-title { font-size: 1.6rem; }
@@ -185,11 +203,11 @@ body {
     margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    background: linear-gradient(90deg, #eafaf0 0%, #b6f2c3 40%, #7ad07b 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #f2fff6 45%, #dfffe8 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 12px 24px rgba(6,43,18,0.25));
+    filter: drop-shadow(0 8px 18px rgba(20,60,30,0.12));
     position: relative;
 }
 
