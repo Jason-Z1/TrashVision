@@ -110,7 +110,7 @@
 
 /* Greek-inspired font stack; you can add a webfont later (GFS Didot, Cardo, Cormorant) */
 .app-title {
-    font-family: 'Cormorant Garamond', 'GFS Didot', Georgia, 'Times New Roman', serif;
+    font-family: papyrus, fantasy;
     color: white
 }
 
@@ -205,7 +205,7 @@ body {
     text-align: center;
     margin-top: 1.2vh;
     margin-bottom: 0;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.06em;
     background: white;
     background-clip: text;
@@ -521,19 +521,23 @@ body {
     text-align: center;
     box-shadow: 0 0.8vh 4vh rgba(0,0,0,0.15);
     color: #113322;
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
     font-family: Verdana, Geneva, Tahoma, sans-serif, -apple-system, BlinkMacSystemFont, cursive;
     z-index: 60;
 }
 
 .prediction-panel h4 { 
     margin: 0 0 0.3rem 0; 
-    font-size: clamp(0.9rem, 2vw, 1.15rem); 
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem); 
 }
 
 .prediction-panel .line { 
     margin: 0.4rem 0; 
-    font-size: clamp(0.85rem, 1.9vw, 1.05rem); 
+    font-size: clamp(1.1rem, 2vw, 1.25rem); 
+/* Make recommendations text larger in prediction panel */
+.prediction-panel ul, .prediction-panel li {
+    font-size: 1.35em;
+}
 }
 
 .thank-you {
