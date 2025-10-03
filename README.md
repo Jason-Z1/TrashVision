@@ -9,8 +9,8 @@
 ## Go Gaia Team
 - **Jason Zheng** - Full-Stack Development & Model Integration
 - **Bhoomi Patni** - Model Training & Integration  
-- **Sharanyara** - Front End Development
-- **Anne** - Front End Development
+- **Sharanya Raj** - Front End Development
+- **Ann Carlos** - Front End Development
 
 ---
 
